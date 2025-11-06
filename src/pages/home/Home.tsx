@@ -2,7 +2,7 @@ import CardCorrida from "../../components/cardcorrida/CardCorrida";
 
 function Home() {
   return (
-    <div className="flex  justify-around gap-4 p-8">
+    <div className="flex  justify-around gap-4 p-8   min-h-[80vh]">
       <CardCorrida driverName="João Silva" fare={18.5} status="Em andamento" />
 
       <CardCorrida
