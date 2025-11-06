@@ -1,13 +1,23 @@
-const RideCard = ({
-  // driverName,
-  userName = "mayara",
-  // fare,
+const CardCorrida = ({
+  driverName = "Aguardando Motorista...",
+  userName = "Passageiro Desconhecido",
+  fare = 0,
   status = "Em andamento",
 }) => {
+  const statusConfig = {
+    "Em andamento": { text: "text-emerald-500", bg: "bg-emerald-500/10" },
+    Finalizada: { text: "text-indigo-400", bg: "bg-indigo-400/10" },
+    Cancelada: { text: "text-red-500", bg: "bg-red-500/10" },
+    Aguardando: { text: "text-yellow-500", bg: "bg-yellow-500/10" },
+  }[status] || { text: "text-gray-400", bg: "bg-gray-400/10" };
+
+  const formattedFare = fare.toFixed(2).replace(".", ",");
+
   return (
     <div className="group relative flex w-80 flex-col rounded-xl bg-slate-950 p-4 shadow-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-indigo-500/20">
-      <div className="absolute inset-0 rounded-xl  from-indigo-500 via-purple-500 to-pink-500 opacity-20 blur-sm transition-opacity duration-300 group-hover:opacity-30" />
+      <div className="absolute inset-0 rounded-xl from-indigo-500 via-purple-500 to-pink-500 opacity-20 blur-sm transition-all duration-300 group-hover:opacity-30" />
       <div className="absolute inset-px rounded-[11px] bg-slate-950" />
+
       <div className="relative">
         <div className="mb-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -30,15 +40,21 @@ const RideCard = ({
               Detalhes da Corrida
             </h3>
           </div>
-          <span className="flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-1 text-xs font-medium text-emerald-500">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+          <span
+            className={`flex items-center gap-1 rounded-full ${statusConfig.bg} px-2 py-1 text-xs font-medium ${statusConfig.text}`}
+          >
+            <span
+              className={`h-1.5 w-1.5 rounded-full ${
+                statusConfig.text
+              } ${statusConfig.bg.replace("/10", "")}`}
+            />
             {status}
           </span>
         </div>
         <div className="mb-4 grid grid-cols-1 gap-3">
           <div className="rounded-lg bg-slate-900/50 p-3">
             <p className="text-xs font-medium text-slate-400">Motorista</p>
-            <p className="text-lg font-semibold text-white">{}</p>
+            <p className="text-lg font-semibold text-white">{driverName}</p>
           </div>
           <div className="rounded-lg bg-slate-900/50 p-3">
             <p className="text-xs font-medium text-slate-400">Passageiro</p>
@@ -47,10 +63,11 @@ const RideCard = ({
           <div className="rounded-lg bg-slate-900/50 p-3">
             <p className="text-xs font-medium text-slate-400">Valor</p>
             <p className="text-lg font-semibold text-white">
-              R$ {Number().toFixed(2)}
+              R$ {formattedFare}
             </p>
           </div>
         </div>
+
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="text-xs font-medium text-slate-400">
@@ -92,4 +109,4 @@ const RideCard = ({
   );
 };
 
-export default RideCard;
+export default CardCorrida;
