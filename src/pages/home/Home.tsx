@@ -1,3 +1,11 @@
+import CardCorrida from "../../components/cardcorrida/CardCorrida";
+
 export default function Home() {
-    return <main>Home</main>;
+  return (
+    <>
+      <div className="flex justify-around">
+        <CardCorrida />
+      </div>
+    </>
+  );
 }
