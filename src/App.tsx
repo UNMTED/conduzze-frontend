@@ -6,23 +6,18 @@ import NavBar from "./components/navbar/NavBar";
 import Home from "./pages/home/Home";
 
 function App() {
-    return (
-        <>
-            <ToastContainer />
-            <BrowserRouter>
-                <NavBar />
-                <div className="min-h-[80vh]">
-                    <Routes>
-                        <Route
-                            path="/"
-                            element={<Home />}
-                        />
-                    </Routes>
-                </div>
-                <Footer />
-            </BrowserRouter>
-        </>
-    );
+  return (
+    <>
+      <ToastContainer />
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </>
+  );
 }
 
 export default App;
