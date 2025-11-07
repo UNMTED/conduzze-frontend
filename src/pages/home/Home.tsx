@@ -6,7 +6,6 @@ import { buscar } from "../../services/Service";
 
 function Home() {
     const [isLoading, setIsLoading] = useState<boolean>(false);
-
     const [corridas, setCorridas] = useState<Corrida[]>([]);
 
     useEffect(() => {
