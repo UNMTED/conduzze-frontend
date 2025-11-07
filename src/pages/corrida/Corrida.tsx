@@ -53,7 +53,7 @@ export default function Corrida() {
     const [origem, setOrigem] = useState<string>("");
     const [destino, setDestino] = useState<string>("");
     const [valor, setValor] = useState<number>(0);
-    const [corrida, setCorrida] = useState<Corrida | null>(null);
+    const [corrida, setCorrida] = useState<Corrida>();
 
     useEffect(() => {
         buscarMotoristas();
@@ -78,7 +78,14 @@ export default function Corrida() {
 
     const cadastrarCorrida = async () => {
         if (!origem || !destino || !motorista || !valor) {
-            ToastAlerta("Preencha todos os campos antes de cadastrar.", "erro");
+            if (!origem || !destino || !motorista) {
+                ToastAlerta(
+                    "Preencha todos os campos antes de cadastrar.",
+                    "erro"
+                );
+            } else {
+                ToastAlerta("Calcule o valor antes de cadastrar.", "erro");
+            }
             return;
         }
         const passageiro: Usuario = {
@@ -98,6 +105,7 @@ export default function Corrida() {
         };
 
         const novaCorrida: Corrida = {
+            id: 0,
             usuario: passageiro,
             origem,
             destino,
@@ -196,12 +204,6 @@ export default function Corrida() {
                                 <button
                                     className="w-full flex items-center justify-center gap-2 rounded-lg bg-linear-to-r from-purple-600 to-pink-600 px-6 py-3 text-lg font-bold text-white shadow-lg shadow-pink-500/30 transition-all duration-300 hover:scale-[1.02]"
                                     onClick={cadastrarCorrida}
-                                    disabled={
-                                        !valor ||
-                                        !origem ||
-                                        !destino ||
-                                        !motorista
-                                    }
                                 >
                                     <CgPoll className="h-5 w-5" /> Solicitar
                                     corrida

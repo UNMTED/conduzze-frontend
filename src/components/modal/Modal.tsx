@@ -1,18 +1,23 @@
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
+import type { PopupPosition } from "reactjs-popup/dist/types";
 
 interface ModalProps {
     trigger: React.ReactNode;
     children: React.ReactNode;
-    textoBtn: string;
+    position?: PopupPosition | PopupPosition[] | undefined;
 }
 
-export default function Modal({ children, trigger }: ModalProps) {
+export default function Modal({
+    children,
+    trigger,
+    position = "top center",
+}: ModalProps) {
     return (
         <Popup
             trigger={trigger}
             modal
-            position="top center"
+            position={position}
             contentStyle={{
                 borderRadius: "1rem",
                 padding: "0",

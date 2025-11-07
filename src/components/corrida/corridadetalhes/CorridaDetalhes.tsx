@@ -7,10 +7,11 @@ import {
     XCircle,
 } from "lucide-react";
 import { useState, type ChangeEvent } from "react";
-import { atualizar } from "../../../services/Service";
+import { atualizar, deletar } from "../../../services/Service";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 interface Corrida {
+    id: number;
     origem: string;
     destino: string;
     valor: number;
@@ -40,6 +41,15 @@ export default function CorridaDetalhes({
     async function atualizarCorridas() {
         try {
             await atualizar(`/corridas`, corridas, setCorridas);
+            ToastAlerta("A corrida foi atualizada com sucesso!", "sucesso");
+            onSuccess();
+        } catch (error) {
+            ToastAlerta("Falha ao atualizar corrida", "erro");
+        }
+    }
+    async function excluirCorridas() {
+        try {
+            await deletar(`/corridas/${corrida.id}`);
             ToastAlerta("A corrida foi atualizada com sucesso!", "sucesso");
             onSuccess();
         } catch (error) {}
@@ -167,13 +177,22 @@ export default function CorridaDetalhes({
             </div>
 
             {/* Button */}
-            <button
-                type="button"
-                onClick={atualizarCorridas}
-                className="w-full rounded-lg bg-linear-to-r from-indigo-600 to-purple-600 px-4 py-2.5 text-sm font-bold text-white shadow-lg shadow-purple-500/30 transition-all duration-300 hover:scale-[1.01] hover:shadow-purple-500/40 active:scale-95"
-            >
-                Atualizar Corrida
-            </button>
+            <div className="flex gap-4">
+                <button
+                    type="button"
+                    onClick={excluirCorridas}
+                    className="w-full rounded-lg bg-linear-to-r from-purple-600 to-pink-600 px-4 py-2.5 text-sm font-bold text-white shadow-lg shadow-purple-500/30 transition-all duration-300 hover:scale-[1.01] hover:shadow-purple-500/40 active:scale-95"
+                >
+                    Excluir Corrida
+                </button>
+                <button
+                    type="button"
+                    onClick={atualizarCorridas}
+                    className="w-full rounded-lg bg-linear-to-r from-indigo-600 to-purple-600 px-4 py-2.5 text-sm font-bold text-white shadow-lg shadow-purple-500/30 transition-all duration-300 hover:scale-[1.01] hover:shadow-purple-500/40 active:scale-95"
+                >
+                    Atualizar Corrida
+                </button>
+            </div>
         </div>
     );
 }
