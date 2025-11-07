@@ -6,7 +6,7 @@ export const NavBar = () => {
     const linkAtivo = "bg-white text-conduzze-dark";
     return (
         <>
-            <div className=" flex justify-between pt-5 py-4  border-b border-white px-10">
+            <div className=" flex justify-between pt-5 py-8  border-b border-white px-10">
                 <img
                     src="https://ik.imagekit.io/yljuedpj1/Conduzz%C3%A9%20(2).png?updatedAt=1762468743907"
                     alt="Logo Conduzzé"
