@@ -38,11 +38,11 @@ const InputContainer: React.FC<InputContainerProps> = ({
 );
 
 const ImageCorridaIllustration = () => (
-    <div className="relative flex h-[450px] w-full items-center justify-center overflow-hidden rounded-xl bg-transparent">
+    <div className="relative flex h-[500px] w-full items-center justify-center overflow-hidden rounded-xl bg-transparent">
         <img
             src={NEW_IMAGE_URL}
             alt="Ilustração da Corrida Conduzzé"
-            className="h-full w-full object-cover opacity-80 transition-opacity duration-300 hover:opacity-100"
+            className="h-full w-full object-fill opacity-80 transition-opacity duration-300 hover:opacity-100"
         />
     </div>
 );
@@ -133,7 +133,7 @@ export default function Corrida() {
     return (
         <div className="flex min-h-[calc(100vh-100px)] flex-col items-center justify-center gap-12 p-8 md:flex-row md:gap-20 md:p-12">
             <div className="w-full ">
-                <h1 className="mb-10 text-5xl font-extrabold text-white sm:text-6xl max-w-lg space-y-8 md:w-1/2">
+                <h1 className="mb-10 text-5xl font-extrabold text-white sm:text-3xl max-w-lg space-y-8 md:w-1/2">
                     Vá a qualquer lugar com o Condu
                     <span className="text-[#F94147]">zzé</span>
                 </h1>
