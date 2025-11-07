@@ -1,9 +1,6 @@
-import type { Corrida } from "./Corrida";
-
 export interface Motorista {
-    id: number;
-    nome: string;
-    foto: string;
-    avaliacao: number;
-    corrida: Corrida[] | null;
+  id: number;
+  nome: string;
+  avaliacao: number;
+  fotoUrl: string; 
 }
