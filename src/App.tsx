@@ -1,12 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "./components/footer/Footer";
 import { NavBar } from "./components/navbar/NavBar";
-// import Corrida from "./pages/corrida/Corrida";
+import Corrida from "./pages/corrida/Corrida";
 import { ToastContainer } from "react-toastify";
 import Home from "./pages/home/Home";
-// import Motoristas from "./pages/motoristas/Motoristas";
-// import { Usuarios } from "./pages/usuarios/Usuarios";
-// import Cadastro from "./pages/cadastro/Cadastro";
 
 function App() {
     return (
@@ -14,7 +11,7 @@ function App() {
             <ToastContainer />
             <BrowserRouter>
                 <div className="min-h-screen text-white bg-linear-to-bl from-people-color-dark to-people-color-light">
-                    <div className="px-20">
+                    <div className="min-h-[80vh] px-20">
                         <div className="max-w-7xl mx-auto">
                             <NavBar />
                             <Routes>
