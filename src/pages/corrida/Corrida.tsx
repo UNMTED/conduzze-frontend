@@ -53,8 +53,6 @@ export default function Corrida() {
     const [origem, setOrigem] = useState<string>("");
     const [destino, setDestino] = useState<string>("");
     const [valor, setValor] = useState<number>(0);
-    const [corrida, setCorrida] = useState<Corrida>();
-
     useEffect(() => {
         buscarMotoristas();
     }, []);
@@ -119,7 +117,7 @@ export default function Corrida() {
         };
 
         try {
-            await cadastrar("/corridas", novaCorrida, setCorrida);
+            await cadastrar("/corridas", novaCorrida, () => {});
             ToastAlerta("Corrida cadastrada com sucesso!", "sucesso");
             setOrigem("");
             setDestino("");
