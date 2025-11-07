@@ -37,7 +37,6 @@ export default function CorridaDetalhes({
             [e.target.name]: e.target.value,
         });
     }
-
     async function atualizarCorridas() {
         try {
             await atualizar(`/corridas`, corridas, setCorridas);

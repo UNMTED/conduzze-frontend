@@ -4,6 +4,7 @@ import Footer from "./components/footer/Footer";
 import { NavBar } from "./components/navbar/NavBar";
 import Corrida from "./pages/corrida/Corrida";
 import Home from "./pages/home/Home";
+import Motorista from "./pages/motorista/Motorista";
 
 function App() {
     return (
@@ -13,7 +14,6 @@ function App() {
                 <div className="min-h-screen text-white bg-linear-to-bl from-people-color-dark to-people-color-light">
                     <NavBar />
                     <div className="max-w-7xl min-h-[95vh] px-20 mx-auto">
-                   
                         <Routes>
                             <Route
                                 path="/"
@@ -29,7 +29,7 @@ function App() {
                             />
                             <Route
                                 path="/motoristas"
-                                // element={<Motoristas />}
+                                element={<Motorista />}
                             />
                         </Routes>
                     </div>

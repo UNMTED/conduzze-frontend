@@ -105,7 +105,7 @@ export default function Corrida() {
             nome: "",
             foto: "",
             avaliacao: 0,
-            corrida: null,
+            corridas: null,
         };
 
         const novaCorrida: Corrida = {
