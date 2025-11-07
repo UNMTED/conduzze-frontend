@@ -68,12 +68,16 @@ export default function Corrida() {
     };
 
     function sortearValor() {
-        const min = 20;
-        const max = 300;
-        const novoValor = parseFloat(
-            (Math.random() * (max - min) + min).toFixed(2)
-        );
-        setValor(novoValor);
+        if (destino && origem) {
+            const min = 20;
+            const max = 300;
+            const novoValor = parseFloat(
+                (Math.random() * (max - min) + min).toFixed(2)
+            );
+            setValor(novoValor);
+        } else {
+            ToastAlerta("Preencha campos antes de calcular o valor", "erro");
+        }
     }
 
     const cadastrarCorrida = async () => {
