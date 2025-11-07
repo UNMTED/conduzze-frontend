@@ -1,8 +1,11 @@
-import type { Corrida } from "../../models/Corrida";
-import type { Status } from "../types/Status";
+import type { Corrida } from "../../../models/Corrida";
+import type { Status } from "../../../types/Status";
+import Modal from "../../modal/Modal";
+import CorridaDetalhes from "../corridadetalhes/CorridaDetalhes";
 
 interface CardCorridaProps {
     corrida: Corrida;
+    onSuccess: () => void;
 }
 
 interface StatusStyle {
@@ -10,7 +13,7 @@ interface StatusStyle {
     bg: string;
 }
 
-const CardCorrida = ({ corrida }: CardCorridaProps) => {
+const CardCorrida = ({ corrida, onSuccess }: CardCorridaProps) => {
     const corridaStatus = (corridaStatus: Status): StatusStyle => {
         const statusMap: Record<Status, StatusStyle> = {
             "Em andamento": {
@@ -67,7 +70,7 @@ const CardCorrida = ({ corrida }: CardCorridaProps) => {
                                 statusConfig.text
                             } ${statusConfig.bg.replace("/10", "")}`}
                         />
-                        {status}
+                        {corrida.status}
                     </span>
                 </div>
                 <div className="mb-4 grid grid-cols-1 gap-3">
@@ -116,22 +119,32 @@ const CardCorrida = ({ corrida }: CardCorridaProps) => {
                             />
                         </svg>
                     </div>
-                    <button className="flex items-center gap-1 rounded-lg from-indigo-500 to-purple-500 px-3 py-1 text-xs font-medium text-white transition-all duration-300 hover:from-indigo-600 hover:to-purple-600">
-                        Ver mais detalhes
-                        <svg
-                            className="h-3 w-3"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M9 5l7 7-7 7"
-                            />
-                        </svg>
-                    </button>
+                    <Modal
+                        textoBtn="Abrir"
+                        trigger={
+                            <button className="flex items-center gap-1 rounded-lg from-indigo-500 to-purple-500 px-3 py-1 text-xs font-medium text-white transition-all duration-300 hover:from-indigo-600 hover:to-purple-600">
+                                Ver mais detalhes
+                                <svg
+                                    className="h-3 w-3"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M9 5l7 7-7 7"
+                                    />
+                                </svg>
+                            </button>
+                        }
+                    >
+                        <CorridaDetalhes
+                            onSuccess={onSuccess}
+                            corrida={corrida}
+                        />
+                    </Modal>
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
-import CardCorrida from "../../components/cardcorrida/CardCorrida";
+import CardCorrida from "../../components/corrida/cardcorrida/CardCorrida";
 import type { Corrida } from "../../models/Corrida";
 import { buscar } from "../../services/Service";
 
@@ -31,6 +31,7 @@ function Home() {
             ) : (
                 corridas.map((corrida) => (
                     <CardCorrida
+                        onSuccess={buscarCorridas}
                         key={corrida.id}
                         corrida={corrida}
                     />

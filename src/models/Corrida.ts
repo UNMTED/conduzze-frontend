@@ -1,4 +1,4 @@
-import type { Status } from "../components/types/Status";
+import type { Status } from "../types/Status";
 import type { Motorista } from "./Motorista";
 import type { Usuario } from "./Usuario";
 
