@@ -21,7 +21,7 @@ export default function Modal({
             contentStyle={{
                 borderRadius: "1rem",
                 padding: "0",
-                marginTop: "10rem",
+                marginTop: "5rem",
             }}
         >
             {

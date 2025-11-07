@@ -11,8 +11,9 @@ function App() {
             <ToastContainer />
             <BrowserRouter>
                 <div className="min-h-screen text-white bg-linear-to-bl from-people-color-dark to-people-color-light">
+                    <NavBar />
                     <div className="max-w-7xl min-h-[95vh] px-20 mx-auto">
-                        <NavBar />
+                   
                         <Routes>
                             <Route
                                 path="/"
