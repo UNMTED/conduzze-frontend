@@ -1,39 +1,44 @@
-import CardCorrida from "../../components/cardcorrida/CardCorrida";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useEffect, useState } from "react";
+import CardCorrida from "../../components/corrida/cardcorrida/CardCorrida";
+import type { Corrida } from "../../models/Corrida";
+import { buscar } from "../../services/Service";
 
 function Home() {
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [corridas, setCorridas] = useState<Corrida[]>([]);
 
-  return (
-    
-    <div className="min-h-screen"> 
-      
-      <div className="pt-24 pb-8 px-4 md:px-8">
-        
-        <h2 className="text-3xl font-bold text-white text-center mb-10">
-            Histórico de Corridas
-        </h2>
+    useEffect(() => {
+        buscarCorridas();
+    }, [corridas.length]);
 
-        <div 
-          
-          className="flex flex-wrap justify-center gap-8" 
-        >
-          
-          <CardCorrida driverName="João Silva" fare={18.5} status="Em andamento" />
+    async function buscarCorridas() {
+        try {
+            setIsLoading(true);
 
-          <CardCorrida
-            driverName="Maria Antunes"
-            fare={0}
-            status="Cancelada"
-            userName="Mano"
-          />
+            await buscar("/corridas", setCorridas);
+        } catch (error: any) {
+            console.error(error);
+        } finally {
+            setIsLoading(false);
+        }
+    }
 
-          <CardCorrida driverName="Pedro Santos" fare={45.99} status="Finalizada" />
-          
-          <CardCorrida driverName="Aguardando Motorista..." fare={22.0} status="Aguardando" />
-
+    return (
+        <div className="flex  justify-around gap-4 p-8">
+            {isLoading ? (
+                <p>Carregando...</p>
+            ) : (
+                corridas.map((corrida) => (
+                    <CardCorrida
+                        onSuccess={buscarCorridas}
+                        key={corrida.id}
+                        corrida={corrida}
+                    />
+                ))
+            )}
         </div>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default Home;
