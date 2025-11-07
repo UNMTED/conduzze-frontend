@@ -50,7 +50,7 @@ export default function CorridaDetalhes({
     async function excluirCorridas() {
         try {
             await deletar(`/corridas/${corrida.id}`);
-            ToastAlerta("A corrida foi atualizada com sucesso!", "sucesso");
+            ToastAlerta("A corrida foi excluída com sucesso!", "sucesso");
             onSuccess();
         } catch (error) {}
     }

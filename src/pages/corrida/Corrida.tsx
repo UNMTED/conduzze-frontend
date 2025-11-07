@@ -115,7 +115,7 @@ export default function Corrida() {
             destino,
             valor,
             motorista: motoristaDados,
-            status: "Em andamento",
+            status: "Aguardando",
         };
 
         try {
