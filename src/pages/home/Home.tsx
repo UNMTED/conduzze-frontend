@@ -25,17 +25,22 @@ function Home() {
     }
 
     return (
-        <div className="flex  justify-around gap-4 p-8">
+        <div className="mt-20 p-8">
             {isLoading ? (
                 <p>Carregando...</p>
             ) : (
-                corridas.map((corrida) => (
-                    <CardCorrida
-                        onSuccess={buscarCorridas}
-                        key={corrida.id}
-                        corrida={corrida}
-                    />
-                ))
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-min">
+                    {corridas
+                        .slice()
+                        .reverse()
+                        .map((corrida) => (
+                            <CardCorrida
+                                onSuccess={buscarCorridas}
+                                key={corrida.id}
+                                corrida={corrida}
+                            />
+                        ))}
+                </div>
             )}
         </div>
     );

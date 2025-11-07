@@ -122,7 +122,7 @@ const CardCorrida = ({ corrida, onSuccess }: CardCorridaProps) => {
                     <Modal
                         textoBtn="Abrir"
                         trigger={
-                            <button className="flex items-center gap-1 rounded-lg from-indigo-500 to-purple-500 px-3 py-1 text-xs font-medium text-white transition-all duration-300 hover:from-indigo-600 hover:to-purple-600">
+                            <button className="flex items-center gap-1 rounded-lg from-indigo-500 to-purple-500 px-3 py-1 text-xs font-medium text-white transition-all duration-300 hover:from-indigo-600 hover:to-purple-600 hover:underline hover:cursor-pointer">
                                 Ver mais detalhes
                                 <svg
                                     className="h-3 w-3"

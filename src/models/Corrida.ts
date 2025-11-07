@@ -3,7 +3,7 @@ import type { Motorista } from "./Motorista";
 import type { Usuario } from "./Usuario";
 
 export interface Corrida {
-    id: number;
+    id?: number;
     origem: string;
     destino: string;
     valor: number;
